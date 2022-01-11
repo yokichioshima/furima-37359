@@ -8,11 +8,10 @@
 | first_name             | string  | null: false                       |
 | last_name_kana         | string  | null: false                       |
 | first_name_kana        | string  | null: false                       |
-| birth_date             | integer | null: false                       |
+| birth_date             | date    | null: false                       |
 
 ### Association
 - has_many :items
-- has_many :delivery_addresses
 - has_many :buy_records
 
 
@@ -32,7 +31,6 @@
 
 ### Association
 - belongs_to :user
-- has_one :delivery_address
 - has_one :buy_record
 
 
@@ -49,8 +47,6 @@
 | buy_record             | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :user
-- belongs_to :item
 - belongs_to :buy_record
 
 
