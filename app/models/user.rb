@@ -5,16 +5,22 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :nickname, :birth_date, presence: true
+  validates :password, 
+            presence: true,
+            format: {
+              with: /\A(?=.*?[a-z])(?=.*?[0-9])[a-z0-9]+\z/,
+              message: 'は半角英数字混合で入力してください'
+            }
   validates :last_name, :first_name,
             presence: true,
             format: {
-              with: /\A[ぁ-んァ-ン一-龥]+\z/,
-              message: 'に全角文字を使用してください'
+              with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/,
+              message: 'は全角文字で入力してください'
             }
   validates :last_name_kana, :first_name_kana,
             presence: true,
             format: {
               with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/,
-              message: '全角カタカナのみで入力して下さい'
+              message: 'は全角カタカナで入力して下さい'
             }
 end
