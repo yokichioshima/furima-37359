@@ -4,7 +4,7 @@ window.addEventListener('load', () => {
   const profit = document.getElementById("profit");
   
   itemPrice.addEventListener('keyup', () => {
-    const handingCharge = itemPrice.value*0.1
+    const handingCharge = parseInt(itemPrice.value*0.1, 10)
     addTaxPrice.innerHTML = handingCharge;
     profit.innerHTML = itemPrice.value - handingCharge;
   });

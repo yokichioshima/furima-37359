@@ -11,12 +11,11 @@ class Item < ApplicationRecord
   validates :image, :category_id, :state_id, :shipping_fee_status_id,
             :prefecture_id, :scheduled_delivery_id, presence: true
   
-  validates :price, presence: true,
-            numericality: {
+  validates :price, numericality: {
             greater_than_or_equal_to: 300,
             less_than_or_equal_to: 9999999,
             message: '¥300~¥9,999,999の範囲の半角数字で入力してください' 
-            }
+            }, presence: true
 
   validates :category_id, :state_id, :shipping_fee_status_id, :scheduled_delivery_id,
             :prefecture_id, numericality: { other_than: 1 , message: "can't be blank" } 
