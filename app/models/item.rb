@@ -6,7 +6,9 @@ class Item < ApplicationRecord
   belongs_to :scheduled_delivery
   belongs_to :prefecture
   
-  validates :name, :info, :category_id, :state_id, :shipping_fee_status_id,
+  validates :name, presence: true, length: { maximum: 40 }
+  validates :info, presence: true, length: { maximum: 1000 }
+  validates :image, :category_id, :state_id, :shipping_fee_status_id,
             :prefecture_id, :scheduled_delivery_id, presence: true
   
   validates :price, presence: true,
