@@ -23,6 +23,6 @@ class User < ApplicationRecord
               with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/,
               message: 'は全角カタカナで入力して下さい'
             }
-  
+
   has_many :items
 end
