@@ -9,9 +9,7 @@ app/assets/stylesheets/items/new.css %>
   <h2 class="items-sell-title">商品の情報を入力</h2>
   <%= form_with model: @item,  local: true do |f| %>
 
-    <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
     <%= render 'shared/error_messages', model: f.object %>
-    <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
 
     <%# 商品画像 %>
     <div class="img-upload">
@@ -44,7 +42,6 @@ app/assets/stylesheets/items/new.css %>
     </div>
     <%# /商品名と商品説明 %>
 
-    <%# 商品の詳細 %>
     <div class="items-detail">
       <div class="weight-bold-text">商品の詳細</div>
       <div class="form">
@@ -60,9 +57,7 @@ app/assets/stylesheets/items/new.css %>
         <%= f.collection_select(:state_id, State.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>
       </div>
     </div>
-    <%# /商品の詳細 %>
 
-    <%# 配送について %>
     <div class="items-detail">
       <div class="weight-bold-text question-text">
         <span>配送について</span>
@@ -86,9 +81,7 @@ app/assets/stylesheets/items/new.css %>
         <%= f.collection_select(:scheduled_delivery_id, ScheduledDelivery.all, :id, :name, {}, {class:"select-box", id:"item-scheduled-delivery"}) %>
       </div>
     </div>
-    <%# /配送について %>
 
-    <%# 販売価格 %>
     <div class="sell-price">
       <div class="weight-bold-text question-text">
         <span>販売価格<br>(¥300〜9,999,999)</span>
@@ -117,7 +110,6 @@ app/assets/stylesheets/items/new.css %>
         </div>
       </div>
     </div>
-    <%# /販売価格 %>
 
     <%# 注意書き %>
     <div class="caution">
@@ -138,12 +130,12 @@ app/assets/stylesheets/items/new.css %>
       </p>
     </div>
     <%# /注意書き %>
-    <%# 下部ボタン %>
+
     <div class="sell-btn-contents">
       <%= f.submit "変更する" ,class:"sell-btn" %>
       <%=link_to 'もどる', item_path(@item.id), class:"back-btn" %>
     </div>
-    <%# /下部ボタン %>
+    
   </div>
   <% end %>
 
