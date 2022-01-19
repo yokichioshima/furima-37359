@@ -12,7 +12,7 @@
 
 ### Association
 - has_many :items
-- has_many :buy_records
+- has_many :orders
 
 
 
@@ -31,11 +31,11 @@
 
 ### Association
 - belongs_to :user
-- has_one :buy_record
+- has_one :order
 
 
 
-## delivery_addressesテーブル
+## destinationsテーブル
 | Column                 | Type       | Options                        |
 | ---------------------- | ---------- | ------------------------------ |
 | postal_code            | text       | null: false                    |
@@ -44,13 +44,13 @@
 | addresses              | string     | null: false                    |
 | building               | string     |                                |
 | phone_number           | string     | null: false                    |
-| buy_record             | references | null: false, foreign_key: true |
+| order             | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :buy_record
+- belongs_to :order
 
 
-## buy_recordsテーブル
+## ordersテーブル
 | Column                 | Type       | Options                        |
 | ---------------------- | ---------- | ------------------------------ |
 | user                   | references | null: false, foreign_key: true |
@@ -59,4 +59,4 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
-- has_one :delivery_record
+- has_one :destination
