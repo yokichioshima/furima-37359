@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :item do
-    name { Faker::String.random(length: 40) }
-    info { Faker::String.random(length: 1000) }
+    name { Faker::Lorem.characters(number: 40) }
+    info { Faker::Lorem.characters(number: 100) }
     category_id { Faker::Number.between(from: 2, to: 11) }
     state_id { Faker::Number.between(from: 2, to: 7) }
     shipping_fee_status_id { Faker::Number.between(from: 2, to: 3) }
