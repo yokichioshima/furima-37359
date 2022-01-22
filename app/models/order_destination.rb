@@ -5,11 +5,10 @@ class OrderDestination
 
   with_options presence: true do
     validates :token
-    validates :user_id, :item_id, numericality: { only_integer: true }
+    validates :user_id, :item_id, :city, :addresses
     validates :postal_code,
               format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Input harf size numbers with hyphen(-)' }
     validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
-    validates :city, :addresses
     validates :phone_number,
               format: { with: /\A[0-9]{10,11}\z/,
                         message: 'is invalid. Input 10 or 11 digit harf size numbers without hyphen(-)' }
