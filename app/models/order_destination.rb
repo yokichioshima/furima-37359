@@ -5,13 +5,14 @@ class OrderDestination
 
   with_options presence: true do
     validates :token
-    validates :user_id, :item_id, :city, :addresses
+    validates :user_id, :item_id
     validates :postal_code,
-              format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Input harf size numbers with hyphen(-)' }
+              format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'は3桁半角数字-4桁半角数字の形式で入力してください' }
     validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
+    validates :city, :addresses
     validates :phone_number,
               format: { with: /\A[0-9]{10,11}\z/,
-                        message: 'is invalid. Input 10 or 11 digit harf size numbers without hyphen(-)' }
+                        message: 'は-を含めず、10桁または11桁の数字を入力してください' }
   end
 
   def save

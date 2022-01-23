@@ -58,19 +58,19 @@ RSpec.describe Item, type: :model do
       it 'priceが全角数字を含む場合、出品できない' do
         @item.price = '１234'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price ¥300~¥9,999,999の範囲の半角数字で入力してください')
+        expect(@item.errors.full_messages).to include('Price は¥300~¥9,999,999の範囲の半角数字で入力してください')
       end
 
       it 'priceが300円未満の場合、出品できない' do
         @item.price = Faker::Number.between(from: -1, to: 299)
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price ¥300~¥9,999,999の範囲の半角数字で入力してください')
+        expect(@item.errors.full_messages).to include('Price は¥300~¥9,999,999の範囲の半角数字で入力してください')
       end
 
       it 'priceが9,999,999より大きい場合、出品できない' do
         @item.price = Faker::Number.between(from: 10_000_000, to: 100_000_000)
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price ¥300~¥9,999,999の範囲の半角数字で入力してください')
+        expect(@item.errors.full_messages).to include('Price は¥300~¥9,999,999の範囲の半角数字で入力してください')
       end
     end
   end

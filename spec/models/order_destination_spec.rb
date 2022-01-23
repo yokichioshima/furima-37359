@@ -60,31 +60,31 @@ RSpec.describe OrderDestination, type: :model do
       it 'postal_codeが数字以外の文字を含む場合、保存できない' do
         @order_destination.postal_code = 'a12-3456'
         @order_destination.valid?
-        expect(@order_destination.errors.full_messages).to include('Postal code is invalid. Input harf size numbers with hyphen(-)')
+        expect(@order_destination.errors.full_messages).to include('Postal code は3桁半角数字-4桁半角数字の形式で入力してください')
       end
 
       it 'postal_codeが全角数字を含む場合、保存できない' do
         @order_destination.postal_code = '01２-3456'
         @order_destination.valid?
-        expect(@order_destination.errors.full_messages).to include('Postal code is invalid. Input harf size numbers with hyphen(-)')
+        expect(@order_destination.errors.full_messages).to include('Postal code は3桁半角数字-4桁半角数字の形式で入力してください')
       end
 
       it 'postal_codeがハイフンを含まなければ保存できない' do
         @order_destination.postal_code = '1234567'
         @order_destination.valid?
-        expect(@order_destination.errors.full_messages).to include('Postal code is invalid. Input harf size numbers with hyphen(-)')
+        expect(@order_destination.errors.full_messages).to include('Postal code は3桁半角数字-4桁半角数字の形式で入力してください')
       end
 
       it 'postal_codeのハイフンの前が３桁でない場合、保存できない' do
         @order_destination.postal_code = '1234-5678'
         @order_destination.valid?
-        expect(@order_destination.errors.full_messages).to include('Postal code is invalid. Input harf size numbers with hyphen(-)')
+        expect(@order_destination.errors.full_messages).to include('Postal code は3桁半角数字-4桁半角数字の形式で入力してください')
       end
 
       it 'postal_codeのハイフンの後が４桁でない場合、保存できない' do
         @order_destination.postal_code = '123-45678'
         @order_destination.valid?
-        expect(@order_destination.errors.full_messages).to include('Postal code is invalid. Input harf size numbers with hyphen(-)')
+        expect(@order_destination.errors.full_messages).to include('Postal code は3桁半角数字-4桁半角数字の形式で入力してください')
       end
 
       it 'prefectureが--では保存できない' do
@@ -96,31 +96,31 @@ RSpec.describe OrderDestination, type: :model do
       it 'phone_numberが数字以外の文字を含む場合、保存できない' do
         @order_destination.phone_number = '012a3456789'
         @order_destination.valid?
-        expect(@order_destination.errors.full_messages).to include('Phone number is invalid. Input 10 or 11 digit harf size numbers without hyphen(-)')
+        expect(@order_destination.errors.full_messages).to include('Phone number は-を含めず、10桁または11桁の数字を入力してください')
       end
 
       it 'phone_numberが全角数字を含む場合、保存できない' do
         @order_destination.phone_number = '012３3456789'
         @order_destination.valid?
-        expect(@order_destination.errors.full_messages).to include('Phone number is invalid. Input 10 or 11 digit harf size numbers without hyphen(-)')
+        expect(@order_destination.errors.full_messages).to include('Phone number は-を含めず、10桁または11桁の数字を入力してください')
       end
 
       it 'phone_numberが10桁未満の場合、保存できない' do
         @order_destination.phone_number = '123456789'
         @order_destination.valid?
-        expect(@order_destination.errors.full_messages).to include('Phone number is invalid. Input 10 or 11 digit harf size numbers without hyphen(-)')
+        expect(@order_destination.errors.full_messages).to include('Phone number は-を含めず、10桁または11桁の数字を入力してください')
       end
 
       it 'phone_numberが11を超過する桁の場合、保存できない' do
         @order_destination.phone_number = '012345678912'
         @order_destination.valid?
-        expect(@order_destination.errors.full_messages).to include('Phone number is invalid. Input 10 or 11 digit harf size numbers without hyphen(-)')
+        expect(@order_destination.errors.full_messages).to include('Phone number は-を含めず、10桁または11桁の数字を入力してください')
       end
 
       it 'phone_numberがハイフンを含む場合、保存できない' do
         @order_destination.phone_number = '012-34567891'
         @order_destination.valid?
-        expect(@order_destination.errors.full_messages).to include('Phone number is invalid. Input 10 or 11 digit harf size numbers without hyphen(-)')
+        expect(@order_destination.errors.full_messages).to include('Phone number は-を含めず、10桁または11桁の数字を入力してください')
       end
 
       it 'tokenが空では保存できない' do
