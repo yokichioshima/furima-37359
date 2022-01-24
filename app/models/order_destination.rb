@@ -8,7 +8,7 @@ class OrderDestination
     validates :user_id, :item_id
     validates :postal_code,
               format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'は3桁半角数字-4桁半角数字の形式で入力してください' }
-    validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
+    validates :prefecture_id, numericality: { other_than: 1, message: "を入力してください" }
     validates :city, :addresses
     validates :phone_number,
               format: { with: /\A[0-9]{10,11}\z/,
