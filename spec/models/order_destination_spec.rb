@@ -90,7 +90,7 @@ RSpec.describe OrderDestination, type: :model do
       it 'prefectureが--では保存できない' do
         @order_destination.prefecture_id = 1
         @order_destination.valid?
-        expect(@order_destination.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@order_destination.errors.full_messages).to include("Prefecture を入力してください")
       end
 
       it 'phone_numberが数字以外の文字を含む場合、保存できない' do
