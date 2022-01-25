@@ -14,9 +14,9 @@ module BlankCheckSupport
     hash[key] = 1
     hash.valid?
     if key.to_s.end_with?('_id')
-      expect(hash.errors.full_messages).to include(key.to_s.capitalize.chop.chop.chop.gsub(/_/, ' ') + ' ' + "can't be blank")
+      expect(hash.errors.full_messages).to include(key.to_s.capitalize.chop.chop.chop.gsub(/_/, ' ') + ' ' + "を入力してください")
     else
-      expect(hash.errors.full_messages).to include(key.to_s.capitalize.gsub(/_/, ' ') + ' ' + "can't be blank")
+      expect(hash.errors.full_messages).to include(key.to_s.capitalize.gsub(/_/, ' ') + ' ' + "を入力してください")
     end
   end
 end
